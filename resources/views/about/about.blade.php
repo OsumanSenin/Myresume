@@ -24,9 +24,13 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
+          @foreach ($about->take(1) as $e)
+              
+          @endforeach
+
         <div class="row">
           <div class="col-lg-4">
-            <img src="{{ asset('img/profile-img.jpg') }}" class="img-fluid" alt="">
+            <img src="{{ asset("img/$e->photo") }}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
             <h3>UI/UX Designer &amp; Web Developer.</h3>
@@ -37,15 +41,15 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 1 May 1995</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> www.example.com</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +123 456 7890</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong>{{ $e->aniversaire }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong>{{ $e->website }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> {{ $e->phone  }}</li>
                   <li><i class="icofont-rounded-right"></i> <strong>City:</strong> City : New York, USA</li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 30</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> {{ $e->age  }}</li>
                   <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> Master</li>
                   <li><i class="icofont-rounded-right"></i> <strong>PhEmailone:</strong> email@example.com</li>
                   <li><i class="icofont-rounded-right"></i> <strong>Freelance:</strong> Available</li>
@@ -58,6 +62,6 @@
             </p>
           </div>
         </div>
-
+        @endforeach
       </div>
     </section><!-- End About Section -->

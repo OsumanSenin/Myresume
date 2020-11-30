@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -74,7 +75,7 @@ class AboutController extends Controller
      */
     public function edit(About $about)
     {
-        //
+        return view("about.edit",compact("about"));
     }
 
     /**
@@ -97,6 +98,8 @@ class AboutController extends Controller
      */
     public function destroy(About $about)
     {
-        //
+        Storage::disk("public")->delete("img/". $about->photo);
+        $about->delete();
+        return redirect()->back();
     }
 }
